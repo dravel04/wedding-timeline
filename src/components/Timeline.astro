@@ -1,0 +1,239 @@
+---
+const { title } = Astro.props;
+---
+<section class="timeline">
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="08:15">08:15</time>
+    <div class="timeline-content">
+      <h3>A por la novia!</h3>
+      <p>Salida del hotel para ir a casa de la novia</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="09:00">09:00</time>
+    <div class="timeline-content">
+      <h3>Llegada a palacio</h3>
+      <p>Llegada aproximada a la casa de la novia</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="09:00">09:00</time>
+    <div class="timeline-content">
+      <h3>Que comiencen los juegos</h3>
+      <p>El novio con sus acompañantes harán algunos juegos de recepción</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="09:30">09:30</time>
+    <div class="timeline-content">
+      <h3>Hora del té</h3>
+      <p>Ceremonía del té donde el novio y la novia le brindarán respetos a sus padres</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="09:45">09:45</time>
+    <div class="timeline-content">
+      <h3>A posar!</h3>
+      <p>Sesión de fotos grupales, en familia, etc</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="11:00">11:00</time>
+    <div class="timeline-content">
+      <h3>Recaga de energía</h3>
+      <p>Almuerzo en casa de la novia con todos los familiares</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="14:00">14:00</time>
+    <div class="timeline-content">
+      <h3>Espiritualmente</h3>
+      <p>Ritual pre-boda, la pareja hará algunos rezos a la familia y dioses</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="15:30">15:30</time>
+    <div class="timeline-content">
+      <h3>Hacia belén va una burra...</h3>
+      <p>Nos desplazaremos al lugar de la boda (Lago Wolong)</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="15:45">15:45</time>
+    <div class="timeline-content">
+      <h3>Luces, cámara y acción</h3>
+      <p>Sesión de fotos en el lugar de la boda</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="16:45">16:45</time>
+    <div class="timeline-content">
+      <h3>La práctica hace al maestro</h3>
+      <p>El maestro de ceremonias llega a la hacienda para realizar un breve ensayo</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="17:00">17:00</time>
+    <div class="timeline-content">
+      <h3>Dónde cabe uno...</h3>
+      <p>Los invitados comienzan a llegar a la hacienda</p>
+    </div>
+  </article>
+  <article class="timeline-event">
+    <time class="timeline-date" datetime="17:30">17:30</time>
+    <div class="timeline-content">
+      <h3>Empieza lo bueno</h3>
+      <p>Comienza la ceremonía de boda.<br>Los invitados ya estarán sentados en sus respectivas mesas</p>
+    </div>
+  </article>
+  <br><br>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 20px auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: #ddd;
+    z-index: -1; /* Asegúrate de que la línea está detrás de los eventos */
+  }
+
+  .timeline-event {
+    position: relative;
+    margin: 35px 0px;
+    color: black;
+  }   
+  .timeline-date {
+    position: absolute;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+		font-weight: 700;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: wheat;
+    padding: 5px 10px;
+    border: 1px solid rgba(var(--accent-light), 25%);
+    border-radius: 4px;
+    z-index: 1; /* Asegúrate de que las fechas están encima de la línea */
+  }
+  .timeline-content {
+    position: relative;
+    top: 10px;
+    width: calc(50% - 20px);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .timeline-event:nth-child(odd) .timeline-date {
+    left: calc(50% - 30px);
+  }
+  .timeline-event:nth-child(even) .timeline-date {
+    left: calc(50% + 30px);
+  }
+
+  .timeline-event:nth-child(odd) .timeline-content {
+    left: 0;
+    transform: translateX(-40px);
+    text-align: left;
+    padding: 1px 20px 1px 20px;
+  }
+  .timeline-event:nth-child(even) .timeline-content {
+    left: 50%;
+    transform: translateX(20px);
+    text-align: right;
+    padding: 1px 20px 1px 20px;
+  }
+
+  .timeline-event:nth-child(even) .timeline-date::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+  }
+
+  .timeline-event:nth-child(odd) .timeline-date::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  .timeline-event .timeline-date::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+  }
+
+  .timeline-event:nth-child(even) .timeline-date::after {
+    left: -8px;
+    border-color: transparent #ddd transparent transparent;
+  }
+
+  .timeline-event:nth-child(odd) .timeline-date::after {
+    right: -8px;
+    border-color: transparent transparent transparent #ddd;
+  }
+
+@media (max-width: 768px) {
+  .timeline-date {
+    font-size: 1.2rem;
+    padding: 3px 8px;
+  }
+  .timeline-content {
+    width: 150px;
+    top: 20px;
+  }
+  .timeline-content h3 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+  .timeline-content p {
+    margin-top: 10px;
+  }
+
+  .timeline-event:nth-child(odd) .timeline-date {
+    left: calc(50% - 30px);
+    padding-right: 20px;
+    }
+    .timeline-event:nth-child(even) .timeline-date {
+    padding-left: 20px;
+    left: calc(50% + 30px);
+  }
+
+  .timeline-event:nth-child(odd) .timeline-content {
+    left: calc(50% - 150px);
+    text-align: center;
+    padding: 1px 10px 1px 10px;
+  }
+  .timeline-event:nth-child(even) .timeline-content {
+    left: calc(50%);
+    text-align: center;
+    padding: 1px 10px 1px 10px;
+  }
+}
+</style>
